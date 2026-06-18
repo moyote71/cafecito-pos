@@ -12,14 +12,25 @@ import cookieParser from "cookie-parser"
 
 const app = express();
 
-app.use(cors({
-  origin: ["http://localhost:3000",
+const allowedOrigins = [
+  "http://localhost:3000",
   "http://localhost:5173",
-  "https://cafecito-pos-zeta.vercel.app"
-],
+  "https://cafecito-pos-zeta.vercel.app",
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("CORS not allowed: " + origin));
+  },
   credentials: true
-  
 }));
+  
 app.use(express.json());
 
 app.use(cookieParser());

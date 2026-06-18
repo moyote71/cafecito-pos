@@ -11,7 +11,6 @@ const DB_URI =
     ? process.env.DB_CONNECTION_STRING_TEST
     : process.env.DB_CONNECTION_STRING;
 
-// ✅ validación fuerte
 if (!DB_URI) {
   console.error("❌ DB_URI no definida");
   process.exit(1);
