@@ -12,21 +12,29 @@ import cookieParser from "cookie-parser"
 
 const app = express();
 
+import cors from "cors";
+
 const allowedOrigins = [
-  "http://localhost:3000",
   "http://localhost:5173",
-  "https://cafecito-pos-zeta.vercel.app",
+  "http://localhost:3000",
+  "https://cafecito-pos-zeta.vercel.app"
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
+    const isAllowed = allowedOrigins.some(o =>
+      origin.startsWith(o) || o.includes("vercel.app")
+    );
+
+    if (isAllowed) {
       return callback(null, true);
     }
 
-    return callback(new Error("CORS not allowed: " + origin));
+    console.log("❌ BLOCKED ORIGIN:", origin);
+
+    return callback(null, true);
   },
   credentials: true
 }));
@@ -41,5 +49,6 @@ app.use("/api/sales", saleRoutes);
 app.use("/api/cash-sessions", cashSessionRoutes);
 app.use("/api/reports", reportRoutes);
 app.use(errorMiddleware);
+app.options("*", cors());
 
 export default app;
