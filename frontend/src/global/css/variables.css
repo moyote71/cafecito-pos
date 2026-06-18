@@ -1,0 +1,93 @@
+:root {
+  /* Coffee Theme Color Palette (HSL for dynamic opacity) */
+  --primary-h: 24;
+  --primary-s: 50%;
+  --primary-l: 30%; /* Rich Espresso Brown */
+  --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  --primary-light: hsl(var(--primary-h), var(--primary-s), 95%);
+  --primary-hover: hsl(var(--primary-h), var(--primary-s), 22%);
+  
+  --secondary-h: 36;
+  --secondary-s: 40%;
+  --secondary-l: 50%; /* Warm Caramel */
+  --secondary: hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l));
+  --secondary-hover: hsl(var(--secondary-h), var(--secondary-s), 42%);
+
+  --accent-h: 38;
+  --accent-s: 70%;
+  --accent-l: 54%; /* Golden Honey */
+  --accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+
+  /* UI Neutral Colors */
+  --bg-app: #f9f6f0;       /* Very soft cream background */
+  --bg-sidebar: #1e130c;   /* Deep Dark Espresso for Sidebar/Control panels */
+  --bg-surface: #ffffff;   /* Pure white cards/containers */
+  --bg-surface-hover: #faf8f5;
+  
+  --text-main: #2b1f1d;    /* Near-black coffee bean */
+  --text-muted: #726259;   /* Muted roasted brown text */
+  --text-light: #ffffff;   /* Contrast light text */
+  --text-on-sidebar: #e8ded1;
+  
+  --border-color: #e2dacd;  /* Creamy soft border */
+  --border-focus: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+
+  /* Semantic status colors */
+  --success: #2e7d32;
+  --success-bg: #e8f5e9;
+  --danger: #c62828;
+  --danger-bg: #ffebee;
+  --warning: #ef6c00;
+  --warning-bg: #fff3e0;
+  --info: #0277bd;
+  --info-bg: #e1f5fe;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, monospace;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;  /* 4px */
+  --spacing-sm: 0.5rem;   /* 8px */
+  --spacing-md: 1rem;     /* 16px */
+  --spacing-lg: 1.5rem;   /* 24px */
+  --spacing-xl: 2rem;     /* 32px */
+  
+  /* Layout Dimensions */
+  --sidebar-width: 260px;
+  --header-height: 70px;
+  --pos-cart-width: 380px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-round: 50%;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(43, 31, 29, 0.08);
+  --shadow-md: 0 4px 12px rgba(43, 31, 29, 0.06), 0 2px 4px rgba(43, 31, 29, 0.04);
+  --shadow-lg: 0 12px 24px rgba(43, 31, 29, 0.12), 0 4px 8px rgba(43, 31, 29, 0.04);
+  --shadow-sidebar: 4px 0 20px rgba(0, 0, 0, 0.2);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9bbae;
+  border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

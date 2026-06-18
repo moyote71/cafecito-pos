@@ -1,0 +1,99 @@
+.pos-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+
+  width: 100%;
+  height: calc(100vh - 64px); /* header limpio */
+  padding: 12px;
+  gap: 12px;
+
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background: #f4f6f9;
+}
+
+/* columnas iguales en altura SIEMPRE */
+.pos-section {
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+  height: 100%; /* CLAVE */
+  overflow: hidden;
+
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+/* PRODUCTOS */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* CARRITO */
+.cart-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* FOOTER SIEMPRE ABAJO */
+.cart-total {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+/* BOTONES CONSISTENTES */
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #111827;
+  color: white;
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* =========================
+   RECEIPT FIX (CLAVE)
+========================= */
+
+.receipt-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 16px;
+}
+
+.receipt-wrapper {
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}

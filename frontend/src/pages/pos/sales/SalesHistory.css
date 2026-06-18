@@ -1,0 +1,60 @@
+.sales-history-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sales-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sales-table-wrapper {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sales-table th {
+  background: #f8fafc;
+  text-align: left;
+  padding: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sales-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.sales-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.btn-reprint {
+  background: #7e5038;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-reprint:hover {
+  background: #6a402c;
+}
+
+.last-ticket {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}

@@ -1,6 +1,19 @@
-node_modules/
+# dependencies
+node_modules
+
+# env files (MUY IMPORTANTE)
 .env
-.env.local
+.env.*
+backend/.env
+frontend/.env
+
+# logs
+npm-debug.log
+yarn-error.log
+
+# builds
+dist
+build
+
+# system files
 .DS_Store
-dist/
-build/

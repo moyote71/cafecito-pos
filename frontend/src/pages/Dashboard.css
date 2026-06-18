@@ -1,0 +1,255 @@
+.dashboard-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.dashboard-loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.dashboard-error-container {
+  max-width: 520px;
+  margin: var(--spacing-lg) auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* GRID */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-round);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.revenue-icon { background: var(--success-bg); }
+.sales-icon { background: var(--primary-light); }
+.ticket-icon { background: var(--warning-bg); }
+
+.stat-info span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.stat-info h3 {
+  font-size: 1.4rem;
+  margin: 0;
+  font-weight: 800;
+}
+
+/* ========================= */
+/* DASHBOARD PANELS */
+/* ========================= */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.dashboard-panel {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.alert-panel {
+  border-top: 4px solid var(--danger);
+}
+
+.panel-header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(0,0,0,.02);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-header h4 {
+  margin: 0;
+  font-size: .95rem;
+  font-weight: 800;
+}
+
+.panel-content {
+  padding: var(--spacing-md);
+}
+
+.no-data-msg {
+  text-align: center;
+  color: var(--text-muted);
+  padding: var(--spacing-lg);
+}
+
+.dashboard-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-list-item:last-child {
+  border-bottom: none;
+}
+
+.item-rank-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.rank-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 800;
+  font-size: .8rem;
+}
+
+.rank-1 {
+  background: #ffd54f;
+  color: #5d4037;
+}
+
+.rank-2 {
+  background: #cfd8dc;
+}
+
+.rank-3 {
+  background: #ffab91;
+}
+
+.rank-4,
+.rank-5 {
+  background: #eeeeee;
+}
+
+.item-stats-right {
+  text-align: right;
+}
+
+.item-stats-right strong {
+  display: block;
+}
+
+.item-stats-right span {
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.badge-count {
+  background: var(--danger-bg);
+  color: var(--danger);
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 800;
+}
+
+.item-title-low {
+  font-weight: 700;
+}
+
+.item-qty-low {
+  background: var(--warning-bg);
+  color: var(--warning);
+
+  padding: 4px 8px;
+  border-radius: 6px;
+
+  font-weight: 700;
+}
+
+.item-qty-low.agotado {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.customer-avatar-dashboard {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    var(--secondary),
+    var(--primary)
+  );
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 800;
+}
+
+.dashboard-customer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-customer-info span {
+  color: var(--text-muted);
+  font-size: .8rem;
+}

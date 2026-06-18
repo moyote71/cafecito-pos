@@ -1,0 +1,29 @@
+.pos-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background: var(--bg-app);
+  overflow: hidden;
+}
+
+/* HEADER */
+.pos-topbar {
+  flex-shrink: 0;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+/* CONTENT SCROLL ONLY HERE */
+.pos-main {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+}

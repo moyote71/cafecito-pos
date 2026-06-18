@@ -1,0 +1,40 @@
+.search-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  position: relative;
+}
+
+.search-wrapper input {
+  flex: 1;
+}
+
+.search-wrapper button {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+}
+
+/* DROPDOWN PERFECTO */
+.dropdown {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid var(--pos-border);
+  border-radius: var(--pos-radius);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  z-index: 50;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-item:hover {
+  background: #f3f4f6;
+}

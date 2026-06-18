@@ -1,0 +1,33 @@
+.payment-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-modal {
+  width: 380px;
+  background: white;
+  border-radius: var(--pos-radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 6px;
+}
+
+.payment-methods button {
+  flex: 1;
+  height: 36px;
+}
+
+.payment-total {
+  font-size: 16px;
+  font-weight: 800;
+}

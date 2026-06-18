@@ -1,29 +1,29 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const mongoose = require ("mongoose");
+import dotenv from "dotenv";
+dotenv.config();
 
-const app = express();
+import app from "./src/app.js";
+import mongoose from "mongoose";
 
-app.use(cors());
-app.use(express.json());
+const PORT = process.env.PORT || 3001;
 
-console.log("ENV:", process.env.DB_CONNECTION_STRING);
+// 👇 elegir DB según entorno
+const DB_URI =
+  process.env.NODE_ENV === "test"
+    ? process.env.DB_CONNECTION_STRING_TEST
+    : process.env.DB_CONNECTION_STRING;
 
-mongoose.connect(process.env.DB_CONNECTION_STRING)
-  .then(() => console.log("🟢 MongoDB Atlas conectado"))
-  .catch(err => console.error("🔴 Error MongoDB:", err));
+mongoose.connect(DB_URI)
+  .then(() => {
+    if (process.env.NODE_ENV !== "test") {
+      console.log("🟢 MongoDB Atlas conectado");
+      app.listen(PORT, () => {
+        console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+      });
+    }
+  })
+  .catch((err) => {
+    console.error("🔴 Error MongoDB:", err);
+    process.exit(1);
+  });
 
-const PORT = 3001;
-
-app.get("/api/products", (req, res) => {
-  res.json([
-    { id: 1, name: "Café Americano", price: 25 },
-    { id: 2, name: "Cappuccino", price: 35 },
-    { id: 3, name: "Latte", price: 40 }
-  ]);
-});
-
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+export default app;

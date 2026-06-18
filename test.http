@@ -1,0 +1,344 @@
+@baseUrl = http://localhost:3001/api
+
+### Pegar aquí el token ADMIN después de hacer login
+@adminToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMWYxYWUxOWY0N2Y1NjdiMjZjMjYyMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc4MTU1NDE4NSwiZXhwIjoxNzgxNTU1MDg1fQ.IUR__a3U2nlPKvm_Lhxcan6dvmNBjbxeDnoA4_2bK3I
+
+### Pegar aquí el token CASHIER después de hacer login
+@cashierToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMWYxYWUxOWY0N2Y1NjdiMjZjMjYyMyIsInJvbGUiOiJjYXNoaWVyIiwiaWF0IjoxNzgwNjk0OTE4LCJleHAiOjE3ODA2OTU4MTh9.JstpWmuNmPlJ1MZa9pGZLVXmY6rWlJNg5XZq076MqAM
+
+##################################################
+# 🔐 AUTH
+##################################################
+
+### LOGIN ADMIN
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@pos.com",
+  "password": "123456"
+}
+
+###
+
+### LOGIN CASHIER
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "cashier@pos.com",
+  "password": "123456"
+}
+
+###
+
+### REFRESH TOKEN
+POST {{baseUrl}}/auth/refresh
+
+###
+
+### LOGOUT
+POST {{baseUrl}}/auth/logout
+
+##################################################
+# 📦 PRODUCTS
+##################################################
+
+### GET ALL PRODUCTS
+GET {{baseUrl}}/products
+Authorization: Bearer {{adminToken}}
+
+###
+
+### GET PRODUCTS PAGINATION
+GET {{baseUrl}}/products?page=1&limit=5
+Authorization: Bearer {{adminToken}}
+
+###
+
+### SEARCH PRODUCT
+GET {{baseUrl}}/products?q=latte
+Authorization: Bearer {{adminToken}}
+
+###
+
+### CREATE PRODUCT (ADMIN)
+POST {{baseUrl}}/products
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "name": "Latte de coco.",
+  "price": 70,
+  "stock": 20
+}
+
+###
+
+### CREATE PRODUCT (CASHIER → DEBE FALLAR)
+POST {{baseUrl}}/products
+Authorization: Bearer {{cashierToken}}
+Content-Type: application/json
+
+{
+  "name": "Producto Prohibido",
+  "price": 10,
+  "stock": 5
+}
+
+###
+
+### UPDATE PRODUCT
+PUT {{baseUrl}}/products/6a20889c422dc51c7a5935f1
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "price": 30,
+  "stock": 22
+}
+
+###
+
+### DELETE PRODUCT
+DELETE {{baseUrl}}/products/6a20889c422dc51c7a5935f1
+Authorization: Bearer {{adminToken}}
+
+##################################################
+# 👤 CUSTOMERS
+##################################################
+
+### GET CUSTOMERS
+GET {{baseUrl}}/customers
+Authorization: Bearer {{adminToken}}
+
+###
+
+### CREATE CUSTOMER
+POST {{baseUrl}}/customers
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "name": "Carlos Rodriguez",
+  "phoneOrEmail": "carlitos@test.com"
+}
+
+
+###
+
+### GET CUSTOMER BY ID
+GET {{baseUrl}}/customers/REPLACE_CUSTOMER_ID
+Authorization: Bearer {{adminToken}}
+
+### DELETE CUSTOMER
+DELETE {{baseUrl}}/customers/6a2dc1fd2a1194e86352042a
+Authorization: Bearer {{adminToken}}
+
+
+
+##################################################
+# 🧾 SALES
+##################################################
+
+### GET SALES
+GET {{baseUrl}}/sales
+Authorization: Bearer {{adminToken}}
+
+###
+
+### CREATE SALE
+POST {{baseUrl}}/sales
+Authorization: Bearer {{cashierToken}}
+Content-Type: application/json
+
+{
+  "customerId": "6a1f1ae19f47f567b26c2621",
+  "paymentMethod": "cash",
+  "items": [
+    {
+      "productId": "6a20889c422dc51c7a5935f1",
+      "quantity": 2
+    }
+  ],
+  "discountPercent": 0
+}
+###
+
+### 
+
+POST {{baseUrl}}/sales
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "customerId": "6a1f1ae19f47f567b26c2621",
+  "paymentMethod": "card",
+  "items": [
+    {
+      "productId": "6a208732feae0adc21afddc9",
+      "quantity": 2
+    }
+  ],
+  "discountPercent": 0
+}
+
+###
+
+### GET SALE BY ID
+GET {{baseUrl}}/sales/REPLACE_SALE_ID
+Authorization: Bearer {{adminToken}}
+
+##################################################
+# 🚨 SECURITY TESTS
+##################################################
+
+### SIN TOKEN
+GET {{baseUrl}}/products
+
+###
+
+### TOKEN CASHIER CONSULTA PRODUCTOS
+GET {{baseUrl}}/products
+Authorization: Bearer {{cashierToken}}
+
+###
+
+### TOKEN CASHIER CREA PRODUCTO (DEBE DAR 403)
+POST {{baseUrl}}/products
+Authorization: Bearer {{cashierToken}}
+Content-Type: application/json
+
+{
+  "name": "Hack Product",
+  "price": 10,
+  "stock": 1
+}
+
+
+### CREATE CUSTOMER CASHIER
+POST {{baseUrl}}/customers
+Authorization: Bearer {{cashierToken}}
+Content-Type: application/json
+
+{
+  "name": "Cliente Cajero",
+  "phoneOrEmail": "clientecajero@test.com"
+}
+
+### SEARCH CUSTOMERS CASHIER
+GET {{baseUrl}}/customers
+Authorization: Bearer {{cashierToken}}
+
+###
+
+POST {{baseUrl}}/sales
+Authorization: Bearer {{cashierToken}}
+Content-Type: application/json
+
+{
+  "customerId": null,
+  "paymentMethod": "cash",
+  "items": [
+    {
+      "productId": "6a21c87012ca36a3d0f81caf",
+      "quantity": 2
+    }
+  ],
+  "discountPercent": 10
+}
+
+##################################################
+# 💵 CASH SESSION
+##################################################
+
+### OPEN CASH SESSION (ADMIN)
+POST {{baseUrl}}/cash-sessions/open
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "openingAmount": 500
+}
+
+### GET MY CASH SESSION
+GET {{baseUrl}}/cash-sessions/me
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json  
+
+
+### GET SESSION REPORT
+GET {{baseUrl}}/cash-sessions/report
+Authorization: Bearer {{adminToken}}
+
+
+### 
+
+### OPEN CASH SESSION (CASHIER)
+POST {{baseUrl}}/cash-sessions/open
+Authorization: Bearer {{cashierToken}}
+Content-Type: application/json
+
+{
+  "openingAmount": 600
+}   
+
+###
+
+### CLOSE CASH SESSION (ADMIN)
+POST {{baseUrl}}/cash-sessions/close
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "closingAmount": 2500
+}
+
+### CLOSE CASH SESSION (CASHIER)
+POST {{baseUrl}}/cash-sessions/close
+Authorization: Bearer {{cashierToken}}
+Content-Type: application/json
+
+{
+  "closingAmount": 2500
+}
+
+##################################################
+# 📊 REPORTS
+##################################################
+
+### DAILY REPORT (ADMIN ONLY)
+GET {{baseUrl}}/reports/daily
+Authorization: Bearer {{adminToken}}
+
+###
+
+### DAILY REPORT CON FECHA ESPECÍFICA (ADMIN ONLY)
+GET {{baseUrl}}/reports/daily?date=2026-06-05
+Authorization: Bearer {{adminToken}}
+
+###
+
+### CASH SESSION REPORT (ADMIN / CASHIER SEGÚN PERMISOS)
+GET {{baseUrl}}/reports/cash/6a2337dc726a54cab65c686e
+Authorization: Bearer {{adminToken}}
+
+###
+
+### CASH SESSION REPORT (CASHIER)
+GET {{baseUrl}}/reports/cash/REPLACE_SESSION_ID
+Authorization: Bearer {{cashierToken}}
+
+###
+
+### TOP CUSTOMERS (ADMIN ONLY)
+GET {{baseUrl}}/reports/top-customers
+Authorization: Bearer {{adminToken}}
+
+##################################################
+# 📊 DASHBOARD
+##################################################
+
+### GET DASHBOARD (ADMIN ONLY)
+GET {{baseUrl}}/reports/dashboard
+Authorization: Bearer {{adminToken}}
