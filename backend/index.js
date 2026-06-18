@@ -6,7 +6,6 @@ import mongoose from "mongoose";
 
 const PORT = process.env.PORT || 3001;
 
-// 👇 elegir DB según entorno
 const DB_URI =
   process.env.NODE_ENV === "test"
     ? process.env.DB_CONNECTION_STRING_TEST
@@ -14,15 +13,16 @@ const DB_URI =
 
 mongoose.connect(DB_URI)
   .then(() => {
+    console.log("🟢 MongoDB conectado");
+
     if (process.env.NODE_ENV !== "test") {
-      console.log("🟢 MongoDB Atlas conectado");
       app.listen(PORT, () => {
-        console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+        console.log(`🚀 Server running on port ${PORT}`);
       });
     }
   })
   .catch((err) => {
-    console.error("🔴 Error MongoDB:", err);
+    console.error("🔴 MongoDB error:", err);
     process.exit(1);
   });
 
