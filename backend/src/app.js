@@ -23,21 +23,19 @@ app.use(
     origin: function (origin, callback) {
       if (!origin) return callback(null, true);
 
-      if (allowedOrigins.includes(origin)) {
+      if (
+        allowedOrigins.includes(origin) ||
+        origin.includes("vercel.app")
+      ) {
         return callback(null, true);
       }
 
-      console.log("❌ CORS BLOCKED:", origin);
-
-      return callback(new Error("CORS not allowed: " + origin));
+      console.log("❌ BLOCKED ORIGIN:", origin);
+      return callback(null, false);
     },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    credentials: true
   })
 );
-
-app.options("*", cors());
 
 app.use(express.json());
 app.use(cookieParser());
