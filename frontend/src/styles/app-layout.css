@@ -4,7 +4,6 @@
   overflow: hidden;
 }
 
-/* SIDEBAR */
 .sidebar {
   width: var(--sidebar-width);
   background: #1f1a17;
@@ -34,7 +33,6 @@
   color: white;
 }
 
-/* MAIN AREA */
 .content-container {
   flex: 1;
   display: flex;
@@ -42,7 +40,6 @@
   overflow: hidden;
 }
 
-/* HEADER */
 .main-header {
   height: var(--header-height);
   background: white;
@@ -53,14 +50,12 @@
   padding: 0 16px;
 }
 
-/* CONTENT */
 .main-content {
   flex: 1;
   overflow: hidden;
   padding: 16px;
 }
 
-/* SCROLL CONTROL */
 .scroll-area {
   height: 100%;
   overflow: auto;

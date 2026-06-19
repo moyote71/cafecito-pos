@@ -17,7 +17,6 @@ export const openCashSession = async (req, res) => {
       return errorResponse(res, 422, "Invalid opening amount");
     }
 
-    // cerrar cualquier sesión abierta previa
     await CashSession.updateMany(
       { userId: req.user.id, status: "open" },
       {
@@ -130,7 +129,7 @@ export const closeCashSession = async (req, res) => {
 };
 
 /**
- * CASH SESSION REPORT (FIX IMPORTANTE)
+ * CASH SESSION REPORT
  */
 export const getCashSessionReport = async (req, res) => {
   try {

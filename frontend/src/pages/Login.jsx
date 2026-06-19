@@ -12,7 +12,6 @@ const Login = () => {
   const { login, user, loading } = useAuth();
   const navigate = useNavigate();
 
-  // 🔥 SOLO redirige si user existe (sin lógica duplicada)
   useEffect(() => {
     if (!user) return;
 
@@ -41,7 +40,6 @@ const Login = () => {
         throw new Error("Respuesta inválida del backend");
       }
 
-      // 🔥 navegación inmediata (evita espera del useEffect)
       if (loggedUser.role === "admin") {
         navigate("/dashboard", { replace: true });
       } else {

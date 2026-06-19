@@ -20,7 +20,7 @@ export const POSProvider = ({ children }) => {
   const addToCart = (product) => {
     const stock = getStock(product);
 
-    if (stock <= 0) return; // 🚫 sin stock
+    if (stock <= 0) return;
 
     setCart((prev) => {
       const existing = prev.find(
@@ -28,7 +28,7 @@ export const POSProvider = ({ children }) => {
       );
 
       if (existing) {
-        if (existing.quantity >= stock) return prev; // 🚫 límite stock
+        if (existing.quantity >= stock) return prev;
 
         return prev.map((item) =>
           item.product._id === product._id
@@ -154,7 +154,6 @@ export const POSProvider = ({ children }) => {
 
       setCheckoutResult(ticket);
 
-      // refresco global de productos
       window.dispatchEvent(new Event("products:update"));
 
       clearCart();

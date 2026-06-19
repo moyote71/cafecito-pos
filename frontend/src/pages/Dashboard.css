@@ -26,7 +26,6 @@
   gap: var(--spacing-md);
 }
 
-/* GRID */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -76,9 +75,6 @@
   font-weight: 800;
 }
 
-/* ========================= */
-/* DASHBOARD PANELS */
-/* ========================= */
 
 .dashboard-grid {
   display: grid;

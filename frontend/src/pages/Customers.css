@@ -5,7 +5,6 @@
   font-family: system-ui, sans-serif;
 }
 
-/* header actions */
 .customers-actions {
   display: flex;
   justify-content: space-between;
@@ -32,7 +31,6 @@
   cursor: pointer;
 }
 
-/* table */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -57,7 +55,6 @@ tbody tr:hover {
   background: #fafafa;
 }
 
-/* modal */
 .modal {
   position: fixed;
   inset: 0;

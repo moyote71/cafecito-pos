@@ -37,7 +37,6 @@
   padding: var(--spacing-xl);
 }
 
-/* Products Table */
 .products-list-container {
   overflow-x: auto;
   border-radius: var(--radius-lg);
@@ -70,7 +69,6 @@
   background-color: var(--bg-surface-hover);
 }
 
-/* Thumbnail */
 .product-thumbnail-cell {
   width: 44px;
   height: 44px;
@@ -107,7 +105,6 @@
   font-size: 1rem;
 }
 
-/* Stock status */
 .product-table-stock {
   font-size: 0.85rem;
   font-weight: 700;
@@ -127,7 +124,6 @@
   border: 1px solid rgba(198, 40, 40, 0.1);
 }
 
-/* Actions cell */
 .product-actions-cell {
   display: flex;
   gap: var(--spacing-sm);
@@ -168,7 +164,6 @@
   border-color: var(--danger);
 }
 
-/* Form layouts */
 .form-grid-two {
   display: grid;
   grid-template-columns: 1fr 1fr;

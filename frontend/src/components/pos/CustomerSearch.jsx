@@ -48,7 +48,7 @@ const CustomerSearch = () => {
 
     try {
       const list = await getCustomers("");
-        setResults(list); // ❌ estabas duplicando setResults
+        setResults(list);
       } catch (err) {
         console.error(err);
         setResults([]);

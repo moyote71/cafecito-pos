@@ -7,7 +7,6 @@
   overflow: hidden;
 }
 
-/* HEADER */
 .pos-topbar {
   flex-shrink: 0;
   height: var(--header-height);
@@ -20,7 +19,6 @@
   z-index: 10;
 }
 
-/* CONTENT SCROLL ONLY HERE */
 .pos-main {
   flex: 1;
   min-height: 0;

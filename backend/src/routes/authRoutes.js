@@ -18,11 +18,6 @@ router.post("/refresh", refreshToken);
 
 router.post("/logout", logoutUser);
 
-router.post(
-    "/register",
-    authMiddleware,
-    roleMiddleware(["admin"]),
-    registerUser
-);
+router.post("/register", authMiddleware, roleMiddleware(["admin"]), registerUser);
 
 export default router;

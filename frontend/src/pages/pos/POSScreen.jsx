@@ -136,7 +136,7 @@ const POSScreen = () => {
         />
       )}
 
-      {/* 🔥 FIX PRINCIPAL: ticket no debe empujar layout */}
+      {/*  ticket no debe empujar layout */}
       {ticket && (
         <div className="receipt-overlay">
           <div className="receipt-wrapper">

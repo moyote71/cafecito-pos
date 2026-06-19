@@ -239,7 +239,7 @@ const ProductsPage = () => {
 
                 <td>${p.price}</td>
 
-                {/* 🔥 FIX VISUAL STOCK */}
+                {/* FIX VISUAL STOCK */}
                 <td>
                   <span
                     style={{

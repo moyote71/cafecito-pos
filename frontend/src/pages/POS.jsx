@@ -16,11 +16,9 @@ const POS = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   
-  // Modals Visibility
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [activeTicket, setActiveTicket] = useState(null);
 
-  // Debounced search for products
   const debouncedSearch = useDebounce(search, 300);
 
   useEffect(() => {
@@ -56,8 +54,8 @@ const POS = () => {
 
   const handleCheckoutSuccess = (ticket) => {
     setShowPaymentModal(false);
-    setActiveTicket(ticket); // Opens ReceiptModal
-    fetchProducts(debouncedSearch); // Reload products to get updated stock!
+    setActiveTicket(ticket);
+    fetchProducts(debouncedSearch);
   };
 
   return (

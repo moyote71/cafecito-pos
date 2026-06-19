@@ -32,7 +32,6 @@
   padding: var(--spacing-xl);
 }
 
-/* Sales Table */
 .sales-list-container {
   overflow-x: auto;
   border-radius: var(--radius-lg);

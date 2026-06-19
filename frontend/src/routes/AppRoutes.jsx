@@ -104,7 +104,7 @@ const AppRoutes = () => {
         }
       />
 
-      {/* 👤 CLIENTES REAL */}
+      {/* CLIENTES REAL */}
       <Route
         path="/clientes"
         element={
@@ -116,7 +116,7 @@ const AppRoutes = () => {
         }
       />
 
-      {/* 📝 REPORTES REAL */}
+      {/* REPORTES REAL */}
       <Route
         path="/reportes"
         element={

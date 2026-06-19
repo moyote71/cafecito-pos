@@ -7,10 +7,6 @@
   background: var(--bg-app);
 }
 
-/* =========================
-   SIDEBAR
-   ========================= */
-
 .sidebar {
   background-color: var(--bg-sidebar);
   color: var(--text-on-sidebar);
@@ -20,21 +16,15 @@
   overflow: hidden;
 }
 
-/* NAV SCROLL FIX */
 .sidebar-nav {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
 }
 
-/* FOOTER FIJO */
 .sidebar-footer {
   flex-shrink: 0;
 }
-
-/* =========================
-   CONTENT
-   ========================= */
 
 .content-container {
   display: flex;

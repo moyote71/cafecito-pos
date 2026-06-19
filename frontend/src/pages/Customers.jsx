@@ -70,7 +70,6 @@ const Customers = () => {
     }
   };
 
-  // 🔥 NUEVO DELETE
   const handleDelete = async (id) => {
     const confirm = window.confirm("¿Eliminar este cliente?");
     if (!confirm) return;
